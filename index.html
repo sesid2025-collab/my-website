@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jestin &amp; Aiwa — Wedding Invitation | November 21, 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500;1,600&family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: {
+              DEFAULT: '#7B2638',
+              dark: '#581826',
+              light: '#9A3349',
+              soft: '#F4E8EA',
+            },
+            offwhite: {
+              DEFAULT: '#FBF7F2',
+              warm: '#F5EDE2',
+              card: '#FFFDF9',
+            },
+            gold: {
+              DEFAULT: '#C89D46',
+              light: '#E7C87B',
+              glow: '#FFD97D',
+            },
+          },
+          fontFamily: {
+            cinzel: ['"Cinzel"', 'serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            lora: ['"Lora"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --primary-burgundy: #7B2638;
+      --deep-burgundy: #581826;
+      --warm-offwhite: #FBF7F2;
+      --champagne-gold: #D4AF37;
+      --bright-gold: #FFE28A;
+      --cube-size: min(64vw, 290px);
+      --cube-half: calc(var(--cube-size) / 2);
+    }
+
+    @media (min-width: 640px) {
+      :root {
+        --cube-size: 330px;
+        --cube-half: 165px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--primary-burgundy);
+      color: var(--primary-burgundy);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    body.intro-active,
+    body.modal-open {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* =========================================================
+       1. SLOW, GRACEFUL INTRO OVERLAY
+       ========================================================= */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(circle at 50% 42%, #922E43 0%, #7B2638 55%, #4D1320 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1), visibility 1.6s ease;
+    }
+
+    #intro-overlay.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-halo {
+      position: absolute;
+      width: min(82vw, 440px);
+      height: min(82vw, 440px);
+      border-radius: 9999px;
+      border: 1px solid rgba(251, 247, 242, 0.16);
+      box-shadow: 0 0 80px rgba(212, 175, 55, 0.14), inset 0 0 50px rgba(251, 247, 242, 0.06);
+      animation: slowSpin 28s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes slowSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .glass-left {
+      transform-origin: 38% 88%;
+      animation: toastLeftSlow 5.6s cubic-bezier(0.25, 1, 0.35, 1) forwards;
+    }
+
+    .glass-right {
+      transform-origin: 62% 88%;
+      animation: toastRightSlow 5.6s cubic-bezier(0.25, 1, 0.35, 1) forwards;
+    }
+
+    @keyframes toastLeftSlow {
+      0% { opacity: 0; transform: translateX(-34px) rotate(-10deg); }
+      22% { opacity: 1; transform: translateX(-10px) rotate(-4deg); }
+      45% { transform: translateX(2px) rotate(6.5deg); }
+      56% { transform: translateX(-1px) rotate(2deg); }
+      100% { opacity: 1; transform: translateX(0px) rotate(3deg); }
+    }
+
+    @keyframes toastRightSlow {
+      0% { opacity: 0; transform: translateX(34px) rotate(10deg); }
+      22% { opacity: 1; transform: translateX(10px) rotate(4deg); }
+      45% { transform: translateX(-2px) rotate(-6.5deg); }
+      56% { transform: translateX(1px) rotate(-2deg); }
+      100% { opacity: 1; transform: translateX(0px) rotate(-3deg); }
+    }
+
+    .wedding-ring-drop {
+      transform-origin: 50% 50%;
+      animation: ringSlowDescend 5.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes ringSlowDescend {
+      0% { opacity: 0; transform: translateY(-135px) scale(0.78) rotate(-18deg); }
+      18% { opacity: 1; transform: translateY(-110px) scale(0.95) rotate(-8deg); }
+      52% { opacity: 1; transform: translateY(14px) scale(1.03) rotate(4deg); }
+      64% { opacity: 1; transform: translateY(4px) scale(0.99) rotate(-2deg); }
+      76% { opacity: 1; transform: translateY(11px) scale(1) rotate(0deg); }
+      100% { opacity: 1; transform: translateY(10px) scale(1) rotate(0deg); }
+    }
+
+    .sparkle-burst {
+      opacity: 0;
+      transform-origin: 180px 142px;
+      animation: sparkleGleam 5.6s ease-in-out forwards;
+    }
+
+    @keyframes sparkleGleam {
+      0%, 40% { opacity: 0; transform: scale(0.4); }
+      54% { opacity: 1; transform: scale(1.12); }
+      70% { opacity: 0.75; transform: scale(0.96); }
+      85% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 0.85; transform: scale(1); }
+    }
+
+    .bubble-1 { animation: bubbleRise 3.2s ease-in infinite 1.2s; }
+    .bubble-2 { animation: bubbleRise 3.6s ease-in infinite 1.8s; }
+    .bubble-3 { animation: bubbleRise 2.9s ease-in infinite 2.2s; }
+    .bubble-4 { animation: bubbleRise 3.4s ease-in infinite 1.5s; }
+
+    @keyframes bubbleRise {
+      0% { opacity: 0; transform: translateY(0) scale(0.6); }
+      30% { opacity: 0.85; }
+      100% { opacity: 0; transform: translateY(-42px) scale(1.15); }
+    }
+
+    .intro-caption {
+      opacity: 0;
+      animation: captionReveal 5.6s ease forwards;
+    }
+
+    @keyframes captionReveal {
+      0%, 24% { opacity: 0; transform: translateY(12px); }
+      45%, 100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================================
+       2. STAGGERED MAIN PAGE ENTRANCE & LUXURY SILK-FILIGREE BACKGROUND
+       ========================================================= */
+    #main-backdrop {
+      background-color: var(--warm-offwhite);
+      background-image:
+        radial-gradient(ellipse at 15% 8%, rgba(123, 38, 56, 0.085) 0%, transparent 42%),
+        radial-gradient(ellipse at 85% 18%, rgba(212, 175, 55, 0.13) 0%, transparent 46%),
+        radial-gradient(ellipse at 12% 52%, rgba(212, 175, 55, 0.10) 0%, transparent 44%),
+        radial-gradient(ellipse at 88% 68%, rgba(123, 38, 56, 0.08) 0%, transparent 46%),
+        radial-gradient(ellipse at 50% 96%, rgba(212, 175, 55, 0.14) 0%, transparent 52%),
+        repeating-linear-gradient(
+          45deg,
+          rgba(123, 38, 56, 0.015) 0px,
+          rgba(123, 38, 56, 0.015) 1px,
+          transparent 1px,
+          transparent 14px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(200, 157, 70, 0.018) 0px,
+          rgba(200, 157, 70, 0.018) 1px,
+          transparent 1px,
+          transparent 14px
+        );
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #main-backdrop.bg-revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .gold-mote {
+      position: absolute;
+      border-radius: 9999px;
+      background: radial-gradient(circle, #FFF3C4 0%, #D4AF37 60%, transparent 100%);
+      pointer-events: none;
+      animation: floatMote var(--dur, 12s) ease-in-out infinite alternate;
+      opacity: 0.45;
+    }
+
+    @keyframes floatMote {
+      0% { transform: translateY(0px) translateX(0px) scale(0.9); opacity: 0.25; }
+      50% { opacity: 0.65; }
+      100% { transform: translateY(-28px) translateX(14px) scale(1.15); opacity: 0.3; }
+    }
+
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(32px) scale(0.985);
+      transition:
+        opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .stagger-item.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* =========================================================
+       2B. ROYAL KEEPSAKE SAVE-THE-DATE CALENDAR STYLING & HEART SEAL
+       ========================================================= */
+    .royal-calendar-shell {
+      position: relative;
+      background: linear-gradient(155deg, #6B1D2F 0%, #7B2638 45%, #4A111E 100%);
+      border: 1.5px solid rgba(231, 200, 123, 0.55);
+      box-shadow:
+        0 24px 52px -14px rgba(123, 38, 56, 0.45),
+        0 0 0 5px rgba(251, 247, 242, 0.85),
+        0 0 0 6.5px rgba(200, 157, 70, 0.42),
+        inset 0 1px 1px rgba(255, 243, 196, 0.32);
+      overflow: visible;
+    }
+
+    .calendar-astrolabe {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 9999px;
+      border: 1px dashed rgba(231, 200, 123, 0.16);
+      pointer-events: none;
+      animation: astrolabeSpin 45s linear infinite;
+    }
+
+    @keyframes astrolabeSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .cal-day-tile {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.9rem;
+      background: rgba(251, 247, 242, 0.06);
+      border: 1px solid rgba(251, 247, 242, 0.09);
+      color: rgba(251, 247, 242, 0.85);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cal-day-tile:hover {
+      background: rgba(251, 247, 242, 0.14);
+      border-color: rgba(231, 200, 123, 0.45);
+      transform: translateY(-2px);
+    }
+
+    @keyframes calTilePop {
+      0% {
+        opacity: 0;
+        transform: scale(0.75) translateY(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .cal-tile-animate {
+      opacity: 0;
+      animation: calTilePop 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: var(--tile-delay, 0ms);
+    }
+
+    .cal-wedding-heart-btn {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 20;
+      opacity: 1 !important;
+      overflow: visible;
+      animation: heartWeddingPulse 2.4s ease-in-out infinite;
+    }
+
+    .cal-wedding-heart-btn:hover {
+      transform: scale(1.22);
+    }
+
+    .cal-wedding-heart-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255, 226, 138, 0.72) 0%, rgba(231, 200, 123, 0.25) 55%, transparent 75%);
+      animation: heartHaloGlow 2.4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .wedding-heart-svg {
+      width: 128%;
+      height: 128%;
+      max-width: none;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 10px rgba(255, 226, 138, 0.8));
+      overflow: visible;
+    }
+
+    .wedding-heart-number {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 3px;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: #4D1320;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+    }
+
+    @media (min-width: 640px) {
+      .wedding-heart-number {
+        font-size: 1.12rem;
+      }
+    }
+
+    @keyframes heartWeddingPulse {
+      0%, 100% { transform: scale(1.1); }
+      18% { transform: scale(1.25); }
+      32% { transform: scale(1.12); }
+      48% { transform: scale(1.22); }
+      70% { transform: scale(1.1); }
+    }
+
+    @keyframes heartHaloGlow {
+      0%, 100% { opacity: 0.7; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    @keyframes sparklePopOut {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.3);
+      }
+    }
+
+    .seal-sparkle-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: #FFF3C4;
+      box-shadow: 0 0 8px #FFD97D;
+      pointer-events: none;
+      animation: sparklePopOut 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* =========================================================
+       3. PHOTO SCROLL-REVEAL, POP-UP & RADIANT EDGE GLOW LIGHT
+       ========================================================= */
+    .photo-glow-card {
+      position: relative;
+      border-radius: 1.35rem;
+      padding: 4px;
+      background: linear-gradient(135deg, rgba(123, 38, 56, 0.28), rgba(212, 175, 55, 0.42), rgba(123, 38, 56, 0.28));
+      opacity: 0;
+      transform: translateY(36px) scale(0.95);
+      cursor: pointer;
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.55s ease;
+      isolation: isolate;
+    }
+
+    .photo-glow-card.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .photo-glow-card::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 1.4rem;
+      background: conic-gradient(
+        from var(--glow-angle, 0deg),
+        #7B2638,
+        #F6D365,
+        #FFF3C4,
+        #D4AF37,
+        #9A3349,
+        #7B2638
+      );
+      z-index: -1;
+      opacity: 0;
+      filter: blur(10px);
+      transition: opacity 0.5s ease;
+      animation: rotateEdgeLight 3.5s linear infinite;
+    }
+
+    .photo-glow-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 1.25rem;
+      padding: 2.5px;
+      background: linear-gradient(135deg, #FFE48F, #FFFFFF, #D4AF37, #7B2638);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+
+    @property --glow-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    @keyframes rotateEdgeLight {
+      to {
+        --glow-angle: 360deg;
+      }
+    }
+
+    .photo-glow-card:hover,
+    .photo-glow-card:focus-visible,
+    .photo-glow-card.is-active {
+      transform: translateY(-10px) scale(1.028);
+      box-shadow:
+        0 24px 48px -12px rgba(123, 38, 56, 0.42),
+        0 0 28px 4px rgba(231, 200, 123, 0.65),
+        0 0 54px 8px rgba(123, 38, 56, 0.25);
+    }
+
+    .photo-glow-card:hover::before,
+    .photo-glow-card:focus-visible::before,
+    .photo-glow-card.is-active::before,
+    .photo-glow-card:hover::after,
+    .photo-glow-card:focus-visible::after,
+    .photo-glow-card.is-active::after {
+      opacity: 1;
+    }
+
+    .photo-glow-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.05rem;
+      background-color: #FBF7F2;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo-frame-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background-color: #F5EDE2;
+      width: 100%;
+    }
+
+    .photo-glow-inner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0.75rem;
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), filter 0.55s ease;
+    }
+
+    .photo-glow-card:hover .photo-glow-inner img,
+    .photo-glow-card.is-active .photo-glow-inner img {
+      transform: scale(1.03);
+      filter: contrast(1.02) brightness(1.02);
+    }
+
+    .photo-sheen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(255, 250, 235, 0.36) 48%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 75%
+      );
+      transform: translateX(-130%);
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+
+    .photo-glow-card:hover .photo-sheen,
+    .photo-glow-card.is-active .photo-sheen {
+      transform: translateX(130%);
+    }
+
+    .ornament-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(123, 38, 56, 0.45), transparent);
+    }
+
+    /* =========================================================
+       3B. FULL-SCREEN PHOTO VIEWER & 3D MAGIC CUBE MODAL
+       ========================================================= */
+    #gallery-experience-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10050;
+      background: radial-gradient(circle at 50% 45%, rgba(123, 38, 56, 0.96) 0%, rgba(42, 10, 18, 0.98) 100%);
+      backdrop-filter: blur(16px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #gallery-experience-modal.is-open {
+      display: flex;
+      opacity: 1;
+    }
+
+    #fullscreen-photo-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 92vw;
+      max-height: 74vh;
+      margin: auto;
+      animation: lightboxZoomIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes lightboxZoomIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #fullscreen-photo-frame {
+      position: relative;
+      padding: 6px;
+      border-radius: 1.35rem;
+      background: linear-gradient(135deg, #FFE48F, #C89D46, #FFF3C4, #7B2638);
+      box-shadow:
+        0 28px 65px rgba(0, 0, 0, 0.65),
+        0 0 36px rgba(231, 200, 123, 0.4);
+      max-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #fullscreen-photo-img {
+      display: block;
+      max-height: calc(68vh - 12px);
+      max-width: 88vw;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 1rem;
+      background: #1B070C;
+    }
+
+    /* 3D Magic Cube Stage */
+    #cube-3d-stage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      user-select: none;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    #cube-3d-stage:active {
+      cursor: grabbing;
+    }
+
+    .cube-scene {
+      width: var(--cube-size);
+      height: var(--cube-size);
+      perspective: 1150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .magic-cube-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-16deg) rotateY(28deg);
+      will-change: transform;
+    }
+
+    .cube-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.15rem;
+      padding: 6px;
+      background: linear-gradient(135deg, #FFF3C4 0%, #D4AF37 50%, #8B2B40 100%);
+      box-shadow:
+        inset 0 0 24px rgba(0, 0, 0, 0.45),
+        0 0 28px rgba(231, 200, 123, 0.35);
+      backface-visibility: visible;
+      overflow: hidden;
+    }
+
+    .cube-face-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.85rem;
+      overflow: hidden;
+      background: #2B0B13;
+      position: relative;
+    }
+
+    .cube-face-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .cube-face--front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
+    .cube-face--back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
+    .cube-face--right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
+    .cube-face--left   { transform: rotateY(-90deg) translateZ(var(--cube-half)); }
+    .cube-face--top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
+    .cube-face--bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
+
+    /* =========================================================
+       4. REDESIGNED ROYAL LUXURY COUNTDOWN TIMER & 3D FLIP ANIMATIONS
+       ========================================================= */
+    .countdown-showcase {
+      position: relative;
+      background: linear-gradient(155deg, #6B1D2F 0%, #7B2638 46%, #4A111E 100%);
+      border: 1.5px solid rgba(231, 200, 123, 0.55);
+      box-shadow:
+        0 26px 58px -14px rgba(123, 38, 56, 0.48),
+        0 0 0 5px rgba(251, 247, 242, 0.85),
+        0 0 0 6.5px rgba(200, 157, 70, 0.42),
+        inset 0 1px 1px rgba(255, 243, 196, 0.32);
+    }
+
+    .countdown-orbital-ring {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 9999px;
+      border: 1px dashed rgba(231, 200, 123, 0.2);
+      pointer-events: none;
+      animation: astrolabeSpin 50s linear infinite;
+    }
+
+    .countdown-orbital-ring::after {
+      content: '';
+      position: absolute;
+      inset: 28px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 226, 138, 0.08);
+    }
+
+    .countdown-medallion {
+      position: relative;
+      background: linear-gradient(175deg, rgba(251, 247, 242, 0.13) 0%, rgba(77, 19, 32, 0.72) 100%);
+      border: 1.5px solid rgba(231, 200, 123, 0.45);
+      box-shadow:
+        0 14px 28px -8px rgba(38, 8, 15, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -8px 20px rgba(45, 10, 18, 0.45);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      perspective: 600px;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .countdown-medallion:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: rgba(255, 243, 196, 0.9);
+      box-shadow:
+        0 20px 36px -10px rgba(38, 8, 15, 0.7),
+        0 0 22px rgba(231, 200, 123, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .countdown-medallion::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        115deg,
+        transparent 25%,
+        rgba(255, 243, 196, 0.18) 50%,
+        transparent 75%
+      );
+      transform: translateX(-140%);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+
+    .countdown-medallion:hover::before {
+      transform: translateX(140%);
+    }
+
+    .countdown-medallion::after {
+      content: '';
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      top: 52%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(231, 200, 123, 0.32), transparent);
+      pointer-events: none;
+    }
+
+    .countdown-seconds-card {
+      border-color: rgba(255, 226, 138, 0.78);
+      animation: secondsCardGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes secondsCardGlow {
+      0%, 100% {
+        box-shadow:
+          0 14px 28px -8px rgba(38, 8, 15, 0.6),
+          0 0 14px rgba(231, 200, 123, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        box-shadow:
+          0 16px 32px -8px rgba(38, 8, 15, 0.65),
+          0 0 26px rgba(255, 226, 138, 0.48),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      }
+    }
+
+    .countdown-numeral {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-variant-numeric: tabular-nums;
+      display: inline-block;
+      transform-origin: 50% 55%;
+      will-change: transform, opacity;
+    }
+
+    .digit-flip-tick {
+      animation: numeralFlipCascade 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes numeralFlipCascade {
+      0% {
+        opacity: 0.2;
+        transform: rotateX(-75deg) translateY(-8px) scale(0.88);
+        filter: brightness(1.45);
+      }
+      55% {
+        opacity: 1;
+        transform: rotateX(12deg) translateY(2px) scale(1.04);
+      }
+      100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0) scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    /* =========================================================
+       5. ROYAL GUESTBOOK & WALL OF BLESSINGS STYLING
+       ========================================================= */
+    .guestbook-folio-shell {
+      position: relative;
+      background: linear-gradient(165deg, #FFFDF9 0%, #FBF6EE 52%, #F4E9D8 100%);
+      border: 1.5px solid rgba(200, 157, 70, 0.55);
+      box-shadow:
+        0 24px 55px -15px rgba(123, 38, 56, 0.22),
+        0 0 0 4px rgba(255, 253, 249, 0.9),
+        0 0 0 5.5px rgba(123, 38, 56, 0.16);
+    }
+
+    .guestbook-input-wrap {
+      position: relative;
+    }
+
+    .guestbook-input {
+      width: 100%;
+      border-radius: 1rem;
+      border: 1.5px solid rgba(123, 38, 56, 0.22);
+      background: #FFFDF9;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #4D1320;
+      box-shadow: inset 0 2px 4px rgba(123, 38, 56, 0.04);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .guestbook-input::placeholder {
+      color: rgba(123, 38, 56, 0.42);
+      font-weight: 400;
+    }
+
+    .guestbook-input:hover {
+      border-color: rgba(200, 157, 70, 0.7);
+    }
+
+    .guestbook-input:focus {
+      outline: none;
+      border-color: #7B2638;
+      background: #FFFFFF;
+      box-shadow:
+        0 0 0 3.5px rgba(231, 200, 123, 0.38),
+        0 8px 20px -6px rgba(123, 38, 56, 0.14);
+    }
+
+    .guestbook-textarea {
+      padding-left: 1.1rem;
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .wax-seal-submit-btn {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #8B2B40 0%, #7B2638 50%, #581826 100%);
+      border: 1.5px solid #E7C87B;
+      box-shadow:
+        0 14px 30px -6px rgba(123, 38, 56, 0.52),
+        inset 0 1px 0 rgba(255, 243, 196, 0.35);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .wax-seal-submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(255, 243, 196, 0.28) 50%,
+        transparent 80%
+      );
+      transform: translateX(-130%);
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wax-seal-submit-btn:hover {
+      transform: translateY(-2.5px) scale(1.02);
+      box-shadow:
+        0 18px 36px -6px rgba(123, 38, 56, 0.62),
+        0 0 20px rgba(231, 200, 123, 0.4),
+        inset 0 1px 0 rgba(255, 243, 196, 0.45);
+    }
+
+    .wax-seal-submit-btn:hover::before {
+      transform: translateX(130%);
+    }
+
+    .blessing-note-card {
+      position: relative;
+      background: linear-gradient(170deg, #FFFDF9 0%, #FAF3E8 100%);
+      border: 1px solid rgba(200, 157, 70, 0.5);
+      border-top: 3.5px solid #7B2638;
+      box-shadow: 0 10px 26px -10px rgba(123, 38, 56, 0.16);
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s ease, border-color 0.38s ease;
+      overflow: hidden;
+    }
+
+    .blessing-note-card:hover {
+      transform: translateY(-5px);
+      border-color: #C89D46;
+      box-shadow:
+        0 18px 36px -12px rgba(123, 38, 56, 0.26),
+        0 0 18px rgba(231, 200, 123, 0.28);
+    }
+
+    .blessing-quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.75rem;
+      line-height: 1;
+      color: rgba(200, 157, 70, 0.22);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .blessing-wish-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.02rem;
+      line-height: 1.72;
+      color: #4D1320;
+    }
+
+    @media (min-width: 640px) {
+      .blessing-wish-text {
+        font-size: 1.08rem;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FBF7F2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #7B2638;
+      border-radius: 9999px;
+    }
+
+    @keyframes wishSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .wish-card-enter {
+      animation: wishSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes eqBar {
+      0%, 100% { transform: scaleY(0.35); }
+      50% { transform: scaleY(1); }
+    }
+    .eq-bar-1 { animation: eqBar 0.85s ease-in-out infinite; }
+    .eq-bar-2 { animation: eqBar 0.65s ease-in-out infinite 0.2s; }
+    .eq-bar-3 { animation: eqBar 0.95s ease-in-out infinite 0.35s; }
+    .eq-paused { animation: none !important; transform: scaleY(0.35); }
+  </style>
+</head>
+<body class="intro-active antialiased selection:bg-burgundy selection:text-offwhite">
+
+  <!-- Background Wedding Audio + Fallback File Picker -->
+  <audio id="bg-music" loop preload="auto" playsinline></audio>
+  <input id="audio-file-picker" type="file" accept="audio/*" class="hidden" />
+
+  <!-- Minimal Discreet Audio Control Button -->
+  <button
+    id="music-toggle-btn"
+    type="button"
+    aria-label="Play or Mute Background Music"
+    title="Toggle Sound"
+    class="fixed bottom-5 left-5 z-[10000] inline-flex items-center gap-2 rounded-full border border-gold/55 bg-burgundy/90 px-3.5 py-2.5 text-xs font-semibold tracking-wider text-offwhite shadow-[0_8px_24px_rgba(38,8,15,0.45)] backdrop-blur-md transition hover:bg-burgundy-dark focus:outline-none focus:ring-2 focus:ring-gold-light"
+  >
+    <span class="flex h-3.5 items-end gap-0.5" aria-hidden="true">
+      <span id="eq-1" class="eq-bar-1 eq-paused w-0.5 h-3.5 bg-gold-light rounded-full origin-bottom"></span>
+      <span id="eq-2" class="eq-bar-2 eq-paused w-0.5 h-3.5 bg-gold-light rounded-full origin-bottom"></span>
+      <span id="eq-3" class="eq-bar-3 eq-paused w-0.5 h-3.5 bg-gold-light rounded-full origin-bottom"></span>
+    </span>
+    <span id="music-status-label" class="hidden">Select Song</span>
+  </button>
+
+  <!-- =========================================================
+       FULL-SCREEN PHOTO VIEWER & INTERACTIVE 3D MAGIC CUBE MODAL
+       ========================================================= -->
+  <div id="gallery-experience-modal" role="dialog" aria-modal="true" aria-label="Full Screen Photo and 3D Magic Cube Viewer">
+    <!-- Top Header Caption -->
+    <div class="w-full max-w-4xl flex items-center justify-between px-2 pt-1 text-offwhite/90">
+      <span class="font-cinzel text-xs sm:text-sm tracking-[0.25em] uppercase text-gold-light">
+        Jestin &amp; Aiwa &bull; Memories
+      </span>
+      <span id="modal-mode-hint" class="font-serif italic text-xs sm:text-sm text-offwhite/80">
+        Full Screen View
+      </span>
+    </div>
+
+    <!-- STAGE 1: FULL-SCREEN SINGLE PHOTO VIEW -->
+    <div id="fullscreen-photo-stage">
+      <div id="fullscreen-photo-frame">
+        <img id="fullscreen-photo-img" src="" alt="Full screen wedding portrait" />
+      </div>
+      <p id="fullscreen-photo-caption" class="mt-3.5 font-serif italic text-base sm:text-xl text-offwhite/95 text-center px-4"></p>
+    </div>
+
+    <!-- STAGE 2: INTERACTIVE 3D MAGIC CUBE VIEW -->
+    <div id="cube-3d-stage">
+      <div class="cube-scene">
+        <div id="magic-cube-3d" class="magic-cube-3d">
+          <div class="cube-face cube-face--front">
+            <div class="cube-face-inner"><img id="cube-img-0" src="photo1.jpeg" alt="Cube face 1" /></div>
+          </div>
+          <div class="cube-face cube-face--right">
+            <div class="cube-face-inner"><img id="cube-img-1" src="photo2.jpeg" alt="Cube face 2" /></div>
+          </div>
+          <div class="cube-face cube-face--back">
+            <div class="cube-face-inner"><img id="cube-img-2" src="photo3.jpeg" alt="Cube face 3" /></div>
+          </div>
+          <div class="cube-face cube-face--left">
+            <div class="cube-face-inner"><img id="cube-img-3" src="photo4.jpeg" alt="Cube face 4" /></div>
+          </div>
+          <div class="cube-face cube-face--top">
+            <div class="cube-face-inner"><img id="cube-img-4" src="photo5.jpeg" alt="Cube face 5" /></div>
+          </div>
+          <div class="cube-face cube-face--bottom">
+            <div class="cube-face-inner"><img id="cube-img-5" src="photo6.jpeg" alt="Cube face 6" /></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-7 font-serif italic text-sm sm:text-base text-gold-light/95 text-center px-4">
+        Drag or swipe in any direction (Up, Down, Left, Right) to rotate the 3D Magic Cube
+      </p>
+    </div>
+
+    <!-- Bottom Action Controls (Switches cleanly between Fullscreen Photo & 3D Cube) -->
+    <div class="w-full max-w-xl pb-2 pt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+      <!-- Controls shown in Single Full-Screen Photo View -->
+      <div id="fullscreen-controls" class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <button
+          id="open-3d-cube-btn"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-full border border-gold-light bg-gradient-to-r from-gold-light via-gold to-gold-light px-6 py-3 font-cinzel text-xs sm:text-sm font-extrabold uppercase tracking-wider text-burgundy-dark shadow-[0_10px_28px_rgba(231,200,123,0.45)] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offwhite"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+            <line x1="12" y1="22.08" x2="12" y2="12" />
+          </svg>
+          <span>3D Image</span>
+        </button>
+
+        <button
+          id="fullscreen-main-page-btn"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-full border border-offwhite/40 bg-offwhite/15 px-6 py-3 font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider text-offwhite backdrop-blur-md transition hover:bg-offwhite/25 focus:outline-none focus:ring-2 focus:ring-gold-light"
+        >
+          <span>&larr; Main Page</span>
+        </button>
+      </div>
+
+      <!-- Controls shown in 3D Magic Cube View -->
+      <div id="cube-controls" class="hidden flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <button
+          id="shuffle-cube-faces-btn"
+          type="button"
+          class="inline-flex items-center gap-1.5 rounded-full border border-gold-light/65 bg-burgundy/90 px-5 py-3 font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider text-gold-light shadow-md transition hover:bg-burgundy-dark focus:outline-none focus:ring-2 focus:ring-gold-light"
+        >
+          <span>Next Photos</span>
+        </button>
+
+        <button
+          id="exit-3d-view-btn"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-full border border-gold-light bg-gradient-to-r from-gold-light via-gold to-gold-light px-6 py-3 font-cinzel text-xs sm:text-sm font-extrabold uppercase tracking-wider text-burgundy-dark shadow-[0_10px_28px_rgba(231,200,123,0.45)] transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offwhite"
+        >
+          <span>Exit 3D View</span>
+        </button>
+
+        <button
+          id="cube-main-page-btn"
+          type="button"
+          class="inline-flex items-center gap-2 rounded-full border border-offwhite/40 bg-offwhite/15 px-6 py-3 font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider text-offwhite backdrop-blur-md transition hover:bg-offwhite/25 focus:outline-none focus:ring-2 focus:ring-gold-light"
+        >
+          <span>Main Page</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       INTRO ANIMATION OVERLAY: 2 WINE GLASSES + FALLING WEDDING RING
+       ========================================================= -->
+  <div id="intro-overlay" role="dialog" aria-label="Wedding Invitation Intro Animation">
+    <div class="intro-halo"></div>
+
+    <div class="pointer-events-none absolute inset-4 sm:inset-8 rounded-3xl border border-offwhite/15"></div>
+
+    <div class="relative z-10 flex flex-col items-center px-6 text-center">
+      <svg
+        class="w-72 h-72 sm:w-88 sm:h-88 overflow-visible drop-shadow-[0_14px_32px_rgba(0,0,0,0.35)]"
+        viewBox="0 0 360 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="goldRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF3C4" />
+            <stop offset="35%" stop-color="#E7C87B" />
+            <stop offset="70%" stop-color="#C89D46" />
+            <stop offset="100%" stop-color="#FFF0B3" />
+          </linearGradient>
+
+          <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF" />
+            <stop offset="50%" stop-color="#E3F2FD" />
+            <stop offset="100%" stop-color="#FFE7A3" />
+          </linearGradient>
+
+          <linearGradient id="wineLiquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F7DF9E" stop-opacity="0.88" />
+            <stop offset="55%" stop-color="#DFB458" stop-opacity="0.78" />
+            <stop offset="100%" stop-color="#A83850" stop-opacity="0.85" />
+          </linearGradient>
+
+          <linearGradient id="crystalGlassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FBF7F2" stop-opacity="0.45" />
+            <stop offset="30%" stop-color="#FBF7F2" stop-opacity="0.12" />
+            <stop offset="75%" stop-color="#FBF7F2" stop-opacity="0.06" />
+            <stop offset="100%" stop-color="#FBF7F2" stop-opacity="0.38" />
+          </linearGradient>
+        </defs>
+
+        <ellipse cx="180" cy="185" rx="115" ry="70" fill="#E7C87B" fill-opacity="0.10" />
+
+        <!-- LEFT WINE GLASS -->
+        <g class="glass-left">
+          <path
+            d="M104 116 H162 L158 164 C156 188 144 202 133 202 C122 202 110 188 108 164 L104 116 Z"
+            fill="url(#crystalGlassGrad)"
+            stroke="#FBF7F2"
+            stroke-opacity="0.72"
+            stroke-width="2.2"
+          />
+          <path
+            d="M107.5 148 Q133 154 158.5 148 L156.5 164 C154.5 186 143 199 133 199 C123 199 111.5 186 109.5 164 Z"
+            fill="url(#wineLiquidGrad)"
+          />
+          <path
+            d="M113 124 L116 172"
+            stroke="#FFFFFF"
+            stroke-opacity="0.55"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <line x1="133" y1="202" x2="133" y2="274" stroke="#FBF7F2" stroke-opacity="0.78" stroke-width="2.8" />
+          <ellipse cx="133" cy="276" rx="28" ry="6" fill="url(#crystalGlassGrad)" stroke="#FBF7F2" stroke-opacity="0.75" stroke-width="2" />
+          <circle class="bubble-1" cx="127" cy="182" r="2" fill="#FFF7DC" />
+          <circle class="bubble-2" cx="139" cy="175" r="1.6" fill="#FFF7DC" />
+        </g>
+
+        <!-- RIGHT WINE GLASS -->
+        <g class="glass-right">
+          <path
+            d="M198 116 H256 L252 164 C250 188 238 202 227 202 C216 202 204 188 202 164 L198 116 Z"
+            fill="url(#crystalGlassGrad)"
+            stroke="#FBF7F2"
+            stroke-opacity="0.72"
+            stroke-width="2.2"
+          />
+          <path
+            d="M201.5 148 Q227 154 252.5 148 L250.5 164 C248.5 186 237 199 227 199 C217 199 205.5 186 203.5 164 Z"
+            fill="url(#wineLiquidGrad)"
+          />
+          <path
+            d="M207 124 L210 172"
+            stroke="#FFFFFF"
+            stroke-opacity="0.55"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <line x1="227" y1="202" x2="227" y2="274" stroke="#FBF7F2" stroke-opacity="0.78" stroke-width="2.8" />
+          <ellipse cx="227" cy="276" rx="28" ry="6" fill="url(#crystalGlassGrad)" stroke="#FBF7F2" stroke-opacity="0.75" stroke-width="2" />
+          <circle class="bubble-3" cx="222" cy="180" r="2" fill="#FFF7DC" />
+          <circle class="bubble-4" cx="234" cy="172" r="1.5" fill="#FFF7DC" />
+        </g>
+
+        <!-- DESCENDING GOLDEN WEDDING RING WITH DIAMOND -->
+        <g class="wedding-ring-drop">
+          <circle cx="180" cy="126" r="26" fill="#FFE28A" fill-opacity="0.22" />
+          <circle
+            cx="180"
+            cy="128"
+            r="19"
+            stroke="url(#goldRingGrad)"
+            stroke-width="4.5"
+            fill="none"
+          />
+          <circle
+            cx="180"
+            cy="128"
+            r="16.8"
+            stroke="#FFFDF7"
+            stroke-opacity="0.6"
+            stroke-width="0.9"
+            fill="none"
+          />
+          <polygon
+            points="180,96 189,104 184,110 176,110 171,104"
+            fill="url(#diamondGrad)"
+            stroke="#FFF8DC"
+            stroke-width="1"
+          />
+          <line x1="171" y1="104" x2="189" y2="104" stroke="#C89D46" stroke-width="0.7" />
+          <line x1="180" y1="96" x2="180" y2="110" stroke="#C89D46" stroke-width="0.7" />
+        </g>
+
+        <!-- SPARKLE BURST WHEN GLASSES TOAST & RING LANDS -->
+        <g class="sparkle-burst">
+          <path d="M150 96 L152 103 L159 105 L152 107 L150 114 L148 107 L141 105 L148 103 Z" fill="#FFF8DC" />
+          <path d="M210 92 L212 99 L219 101 L212 103 L210 110 L208 103 L201 101 L208 99 Z" fill="#FFF8DC" />
+          <path d="M180 72 L182 81 L191 83 L182 85 L180 94 L178 85 L169 83 L178 81 Z" fill="#FFE28A" />
+          <circle cx="162" cy="84" r="2" fill="#FFE28A" />
+          <circle cx="198" cy="84" r="2" fill="#FFE28A" />
+          <circle cx="180" cy="158" r="2.2" fill="#FFF8DC" />
+        </g>
+      </svg>
+
+      <!-- Elegant Intro Typography -->
+      <div class="intro-caption mt-2 space-y-2">
+        <p class="font-sans text-xs sm:text-sm uppercase tracking-[0.35em] text-offwhite/80">
+          Two Hearts &bull; One Forever
+        </p>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-semibold tracking-wider text-offwhite">
+          Jestin <span class="text-gold-light font-serif italic">&amp;</span> Aiwa
+        </h2>
+      </div>
+    </div>
+
+    <!-- Subtle Skip Intro Button -->
+    <button
+      id="skip-intro-btn"
+      type="button"
+      class="absolute bottom-6 right-6 z-20 rounded-full border border-offwhite/30 bg-offwhite/10 px-4 py-2 text-xs font-medium tracking-widest uppercase text-offwhite backdrop-blur-sm transition hover:bg-offwhite/20 focus:outline-none focus:ring-2 focus:ring-gold-light"
+    >
+      Enter Invitation &rarr;
+    </button>
+  </div>
+
+  <!-- =========================================================
+       MAIN WEDDING INVITATION PAGE (#FBF7F2 & #7B2638)
+       ========================================================= -->
+  <div id="main-backdrop" class="min-h-screen w-full relative overflow-hidden">
+
+    <!-- Luxury Architectural Filigree, Botanical Line-Art & Floating Gold Motes -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div class="absolute inset-2.5 sm:inset-5 rounded-[2.25rem] border border-burgundy/12"></div>
+      <div class="absolute inset-4 sm:inset-7 rounded-[2rem] border border-gold/25"></div>
+
+      <svg class="absolute -top-8 -left-8 w-72 h-72 sm:w-[26rem] sm:h-[26rem] text-burgundy/20" viewBox="0 0 240 240" fill="none">
+        <path d="M12 228 C35 130, 95 60, 228 12" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" />
+        <path d="M24 228 C52 145, 108 82, 228 28" stroke="#C89D46" stroke-opacity="0.45" stroke-width="1" />
+        <circle cx="76" cy="108" r="52" stroke="#C89D46" stroke-opacity="0.35" stroke-width="0.9" />
+        <circle cx="136" cy="56" r="34" stroke="currentColor" stroke-width="0.9" />
+        <path d="M56 128 Q76 92 104 88 Q82 116 56 128 Z" fill="#C89D46" fill-opacity="0.14" />
+        <path d="M98 84 Q122 52 148 52 Q124 76 98 84 Z" fill="currentColor" fill-opacity="0.10" />
+      </svg>
+
+      <svg class="absolute -bottom-8 -right-8 w-72 h-72 sm:w-[26rem] sm:h-[26rem] text-burgundy/20 rotate-180" viewBox="0 0 240 240" fill="none">
+        <path d="M12 228 C35 130, 95 60, 228 12" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" />
+        <path d="M24 228 C52 145, 108 82, 228 28" stroke="#C89D46" stroke-opacity="0.45" stroke-width="1" />
+        <circle cx="76" cy="108" r="52" stroke="#C89D46" stroke-opacity="0.35" stroke-width="0.9" />
+        <circle cx="136" cy="56" r="34" stroke="currentColor" stroke-width="0.9" />
+        <path d="M56 128 Q76 92 104 88 Q82 116 56 128 Z" fill="#C89D46" fill-opacity="0.14" />
+        <path d="M98 84 Q122 52 148 52 Q124 76 98 84 Z" fill="currentColor" fill-opacity="0.10" />
+      </svg>
+
+      <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-3xl h-auto text-gold/15" viewBox="0 0 400 500" fill="none">
+        <path d="M40 480 V200 C40 100 112 30 200 30 C288 30 360 100 360 200 V480" stroke="currentColor" stroke-width="1.2" />
+        <path d="M56 480 V204 C56 112 120 46 200 46 C280 46 344 112 344 204 V480" stroke="#7B2638" stroke-opacity="0.14" stroke-width="0.9" stroke-dasharray="5 5" />
+      </svg>
+
+      <span class="gold-mote w-2 h-2 top-[14%] left-[12%]" style="--dur: 11s;"></span>
+      <span class="gold-mote w-2.5 h-2.5 top-[28%] right-[14%]" style="--dur: 14s;"></span>
+      <span class="gold-mote w-1.5 h-1.5 top-[52%] left-[8%]" style="--dur: 10s;"></span>
+      <span class="gold-mote w-2 h-2 top-[68%] right-[10%]" style="--dur: 13s;"></span>
+      <span class="gold-mote w-2.5 h-2.5 bottom-[14%] left-[18%]" style="--dur: 15s;"></span>
+      <span class="gold-mote w-1.5 h-1.5 bottom-[24%] right-[22%]" style="--dur: 12s;"></span>
+    </div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 mx-auto max-w-5xl px-4 py-8 sm:px-8 sm:py-14">
+
+      <!-- Luxury Outer Invitation Card Frame -->
+      <div class="rounded-[2rem] border-2 border-burgundy/20 bg-offwhite-card/92 p-5 sm:p-10 md:p-14 shadow-[0_28px_80px_-15px_rgba(123,38,56,0.18)] backdrop-blur-md">
+
+        <!-- =====================================================
+             COUPLE HEADER & INVITATION MESSAGE
+             ===================================================== -->
+        <header class="stagger-item text-center mb-9 sm:mb-11" data-stagger="1">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full border border-gold/45 bg-offwhite shadow-sm text-burgundy">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" d="M12 3v18M7 8h10" />
+            </svg>
+          </div>
+
+          <p class="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-burgundy/75">
+            Together With Their Families
+          </p>
+
+          <h1 class="mt-3 font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold tracking-wider text-burgundy">
+            Jestin <span class="font-serif italic font-normal text-gold">&amp;</span> Aiwa
+          </h1>
+
+          <p class="mx-auto mt-4 max-w-2xl font-serif text-lg sm:text-xl md:text-2xl leading-relaxed text-burgundy/90">
+            With great joy, we invite you and your family to celebrate the Holy Sacrament of Matrimony and share in the happiness of our Wedding Day.
+          </p>
+        </header>
+
+        <!-- =====================================================
+             PROMINENT BOLD WEDDING DATE, TIME & ROYAL KEEPSAKE CALENDAR
+             ===================================================== -->
+        <section class="stagger-item" data-stagger="2" aria-label="Wedding Date and Time">
+          <div class="rounded-3xl border-2 border-burgundy/25 bg-gradient-to-br from-offwhite via-offwhite-card to-offwhite-warm p-6 sm:p-9 text-center shadow-[0_14px_40px_-10px_rgba(123,38,56,0.14)]">
+            <span class="inline-block rounded-full bg-burgundy/10 px-4 py-1 font-sans text-xs font-extrabold uppercase tracking-[0.25em] text-burgundy">
+              Save The Date
+            </span>
+
+            <div class="mt-4 flex flex-col items-center justify-center gap-2">
+              <p class="font-display text-2xl sm:text-4xl md:text-[2.65rem] font-black tracking-tight text-burgundy leading-tight">
+                Saturday, November 21, 2026
+              </p>
+              <div class="mt-1 inline-flex items-center gap-3 rounded-2xl bg-burgundy px-6 py-2.5 text-offwhite shadow-lg border border-gold/40">
+                <svg class="h-5 w-5 sm:h-6 sm:w-6 text-gold-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+                  <circle cx="12" cy="12" r="9" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2" />
+                </svg>
+                <span class="font-display text-xl sm:text-3xl font-black tracking-wide">
+                  4:30 PM
+                </span>
+              </div>
+            </div>
+
+            <!-- Bespoke Dynamic Keepsake Calendar (November 2026) -->
+            <div class="mt-8 mx-auto max-w-md">
+              <div id="keepsake-calendar" class="royal-calendar-shell rounded-[1.85rem] p-5 sm:p-7 text-offwhite">
+                <div class="calendar-astrolabe" aria-hidden="true"></div>
+
+                <!-- Inner Filigree Corner Lines -->
+                <div class="pointer-events-none absolute inset-2.5 rounded-[1.45rem] border border-gold-light/25"></div>
+
+                <!-- Calendar Header -->
+                <div class="relative z-10 flex items-center justify-between border-b border-gold-light/25 pb-3.5 mb-4">
+                  <div class="text-left">
+                    <span class="block font-sans text-[10px] font-bold uppercase tracking-[0.28em] text-gold-light">
+                      The Wedding Month
+                    </span>
+                    <h3 class="font-cinzel text-xl sm:text-2xl font-bold tracking-wider text-offwhite">
+                      November <span class="text-gold-light">2026</span>
+                    </h3>
+                  </div>
+
+                  <!-- Decorative Monogram Crest -->
+                  <div class="flex h-11 w-11 items-center justify-center rounded-full border border-gold-light/55 bg-offwhite/10 shadow-inner">
+                    <span class="font-cinzel text-xs font-bold tracking-tighter text-gold-light">J&amp;A</span>
+                  </div>
+                </div>
+
+                <!-- Weekday Headers (Sunday to Saturday) -->
+                <div class="relative z-10 grid grid-cols-7 gap-1.5 sm:gap-2 mb-2 text-center font-sans text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-gold-light/85">
+                  <span>Sun</span>
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span class="text-gold-glow">Sat</span>
+                </div>
+
+                <!-- Dynamic Calendar Grid -->
+                <div
+                  id="royal-calendar-grid"
+                  class="relative z-10 grid grid-cols-7 gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold"
+                  role="grid"
+                  aria-label="November 2026 Wedding Calendar"
+                ></div>
+
+                <!-- Live Dynamic Footer Pill inside Calendar -->
+                <div class="relative z-10 mt-5 pt-3 border-t border-gold-light/20 flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+                  <span class="inline-flex items-center gap-1.5 font-serif italic text-offwhite/90">
+                    <span class="text-gold-light text-sm leading-none">&#10084;</span>
+                    <span>Saturday, Nov 21 &bull; Holy Matrimony</span>
+                  </span>
+                  <span
+                    id="calendar-live-status"
+                    class="rounded-full bg-offwhite/12 border border-gold-light/35 px-3 py-0.5 font-sans text-[10px] font-bold uppercase tracking-wider text-gold-light"
+                  >
+                    Save The Date
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornament-line my-10 sm:my-12"></div>
+
+        <!-- =====================================================
+             CEREMONY & RECEPTION VENUE DETAILS + GOOGLE MAPS
+             ===================================================== -->
+        <section class="stagger-item" data-stagger="3" aria-label="Venue Details and Locations">
+          <div class="text-center mb-7">
+            <p class="font-sans text-xs font-bold uppercase tracking-[0.28em] text-burgundy/70">
+              Celebration Details
+            </p>
+            <h2 class="mt-1 font-cinzel text-2xl sm:text-3xl font-bold text-burgundy">
+              Ceremony &amp; Reception
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Wedding Ceremony Card -->
+            <div class="group rounded-3xl border border-burgundy/20 bg-offwhite p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-burgundy/40 flex flex-col justify-between">
+              <div>
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-burgundy text-offwhite shadow-md">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v4m-2-2h4M7 10l5-4 5 4v11H7V10zm-3 5h3v6H4v-6zm13 0h3v6h-3v-6zm-6 2h2v4h-2v-4z" />
+                  </svg>
+                </div>
+                <span class="block font-sans text-xs font-bold uppercase tracking-widest text-gold">
+                  Holy Sacrament of Matrimony
+                </span>
+                <h3 class="mt-1 font-cinzel text-xl sm:text-2xl font-bold text-burgundy">
+                  Wedding Ceremony
+                </h3>
+                <p class="mt-3 font-sans text-base sm:text-lg font-bold text-burgundy">
+                  St. Thomas Church, Manikkadavu
+                </p>
+                <p class="mt-1 font-sans text-sm text-burgundy/80">
+                  Saturday, November 21, 2026 &bull; <strong class="font-bold text-burgundy">4:30 PM</strong>
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-burgundy/10">
+                <a
+                  href="https://maps.app.goo.gl/3Eepru8Kw1rfXfWy5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-burgundy px-5 py-3.5 font-sans text-sm sm:text-base font-bold text-offwhite shadow-md transition hover:bg-burgundy-dark focus:outline-none focus:ring-2 focus:ring-burgundy focus:ring-offset-2"
+                >
+                  <svg class="h-5 w-5 text-gold-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>Church Location (Google Maps)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Wedding Reception Card -->
+            <div class="group rounded-3xl border border-burgundy/20 bg-offwhite p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-burgundy/40 flex flex-col justify-between">
+              <div>
+                <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-burgundy text-offwhite shadow-md">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 3h8l-1 7a3 3 0 01-6 0L8 3zm4 10v7m-4 0h8" />
+                  </svg>
+                </div>
+                <span class="block font-sans text-xs font-bold uppercase tracking-widest text-gold">
+                  Dinner &amp; Celebrations
+                </span>
+                <h3 class="mt-1 font-cinzel text-xl sm:text-2xl font-bold text-burgundy">
+                  Wedding Reception
+                </h3>
+                <p class="mt-3 font-sans text-base sm:text-lg font-bold text-burgundy">
+                  Followed by the Reception
+                </p>
+                <p class="mt-1 font-sans text-sm text-burgundy/80">
+                  Immediately following the Church Ceremony &bull; Join us for dinner &amp; joy
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-burgundy/10">
+                <a
+                  href="https://maps.app.goo.gl/wttEeqn7rpZmqFGaA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-burgundy px-5 py-3.5 font-sans text-sm sm:text-base font-bold text-offwhite shadow-md transition hover:bg-burgundy-dark focus:outline-none focus:ring-2 focus:ring-burgundy focus:ring-offset-2"
+                >
+                  <svg class="h-5 w-5 text-gold-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>Reception Location (Google Maps)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornament-line my-10 sm:my-12"></div>
+
+        <!-- =====================================================
+             COUPLE PHOTO GALLERY (CLICK FOR FULLSCREEN & 3D MAGIC CUBE)
+             ===================================================== -->
+        <section class="stagger-item" data-stagger="7" aria-label="Couple Photo Gallery">
+          <div class="text-center mb-8">
+            <p class="font-sans text-xs font-bold uppercase tracking-[0.28em] text-burgundy/70">
+              Captured Moments
+            </p>
+            <h2 class="mt-1 font-cinzel text-2xl sm:text-3xl font-bold text-burgundy">
+              Jestin &amp; Aiwa
+            </h2>
+            <p class="mt-2 font-sans text-xs sm:text-sm text-burgundy/75">
+              Tap any photograph to view full screen or explore in 3D Magic Cube
+            </p>
+          </div>
+
+          <div class="space-y-7 sm:space-y-9">
+            <!-- Featured Wide Landscape Portrait (photo1) -->
+            <div class="photo-glow-card group" role="button" tabindex="0">
+              <div class="photo-glow-inner">
+                <div class="photo-frame-viewport">
+                  <img
+                    src="photo1.jpeg"
+                    alt="Jestin and Aiwa smiling warmly together"
+                  />
+                  <div class="photo-sheen"></div>
+                </div>
+                <div class="pt-3 pb-1 px-2 text-center">
+                  <p class="font-serif italic text-lg sm:text-xl text-burgundy/90">
+                    Forever begins with a smile &mdash; Jestin &amp; Aiwa
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 1: Three Full-Length Vertical Portraits (photo2, photo3, photo4) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-start">
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo2.jpeg"
+                      alt="Jestin leading Aiwa by the hand across a lush green garden"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Every step brighter together</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo3.jpeg"
+                      alt="Jestin and Aiwa walking arm in arm on green lawns"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Stepping into forever together</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo4.jpeg"
+                      alt="Jestin and Aiwa holding hands under a floral archway"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Hand in hand, heart to heart</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Three Vertical Portraits (photo5, photo6, photo7) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-start">
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo5.jpeg"
+                      alt="Jestin and Aiwa sitting on steps holding hands and smiling at each other"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Lost in each other&rsquo;s smiles</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo6.jpeg"
+                      alt="Jestin and Aiwa standing together on a lush green lawn"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Two souls, one shared joy</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo7.jpeg"
+                      alt="Jestin and Aiwa walking hand in hand across green grass"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Walking side by side into tomorrow</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Three Vertical Portraits (photo8, photo9, photo10) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-start">
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo8.jpeg"
+                      alt="Jestin and Aiwa seated together on a white garden bench"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Moments of pure warmth and laughter</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo9.jpeg"
+                      alt="Jestin and Aiwa posing beside a classic vintage car"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Timeless love, classic charm</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo10.jpeg"
+                      alt="Jestin and Aiwa leaning on a white garden pergola looking at each other"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-1 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Every glance tells our story</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Featured Candid Portrait (photo11) -->
+            <div class="mx-auto max-w-md">
+              <div class="photo-glow-card group" role="button" tabindex="0">
+                <div class="photo-glow-inner">
+                  <div class="photo-frame-viewport">
+                    <img
+                      src="photo11.jpeg"
+                      alt="Jestin and Aiwa sharing a joyful candid laugh together"
+                    />
+                    <div class="photo-sheen"></div>
+                  </div>
+                  <div class="pt-3 pb-1 px-2 text-center">
+                    <p class="font-serif italic text-base sm:text-lg text-burgundy/90">Laughter that lasts a lifetime</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornament-line my-10 sm:my-12"></div>
+
+        <!-- =====================================================
+             REDESIGNED ROYAL LUXURY COUNTDOWN TIMER SHOWCASE
+             ===================================================== -->
+        <section class="stagger-item" data-stagger="8" aria-label="Wedding Countdown Timer">
+          <div class="countdown-showcase rounded-[2rem] p-6 sm:p-10 md:p-12 text-center overflow-hidden">
+            <div class="countdown-orbital-ring" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute inset-2.5 sm:inset-3.5 rounded-[1.55rem] border border-gold-light/30"></div>
+
+            <div class="relative z-10">
+              <div class="inline-flex items-center justify-center gap-3 mb-2">
+                <span class="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent to-gold-light/85"></span>
+                <span class="text-gold-light text-xs">&#10022;</span>
+                <span class="font-sans text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.34em] text-gold-light">
+                  Counting Down To Forever
+                </span>
+                <span class="text-gold-light text-xs">&#10022;</span>
+                <span class="h-px w-10 sm:w-16 bg-gradient-to-l from-transparent to-gold-light/85"></span>
+              </div>
+
+              <h2 class="mt-1.5 font-cinzel text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider text-offwhite drop-shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
+                Until We Say <span class="font-playfair italic font-semibold text-gold-light">&ldquo;I Do&rdquo;</span>
+              </h2>
+            </div>
+
+            <div
+              id="countdown-grid"
+              class="relative z-10 mt-8 sm:mt-10 grid grid-cols-4 gap-2.5 sm:gap-5 max-w-2xl mx-auto"
+            >
+              <div class="countdown-medallion rounded-t-full rounded-b-2xl pt-6 pb-4 px-2 sm:pt-8 sm:pb-6 sm:px-4">
+                <div
+                  id="cd-days"
+                  class="countdown-numeral text-3xl sm:text-5xl md:text-[3.4rem] font-bold text-offwhite leading-none drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
+                >
+                  00
+                </div>
+                <div class="mt-3 sm:mt-4 font-cinzel text-[9px] sm:text-xs font-bold uppercase tracking-[0.24em] text-gold-light">
+                  Days
+                </div>
+              </div>
+
+              <div class="countdown-medallion rounded-t-full rounded-b-2xl pt-6 pb-4 px-2 sm:pt-8 sm:pb-6 sm:px-4">
+                <div
+                  id="cd-hours"
+                  class="countdown-numeral text-3xl sm:text-5xl md:text-[3.4rem] font-bold text-offwhite leading-none drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
+                >
+                  00
+                </div>
+                <div class="mt-3 sm:mt-4 font-cinzel text-[9px] sm:text-xs font-bold uppercase tracking-[0.24em] text-gold-light">
+                  Hours
+                </div>
+              </div>
+
+              <div class="countdown-medallion rounded-t-full rounded-b-2xl pt-6 pb-4 px-2 sm:pt-8 sm:pb-6 sm:px-4">
+                <div
+                  id="cd-mins"
+                  class="countdown-numeral text-3xl sm:text-5xl md:text-[3.4rem] font-bold text-offwhite leading-none drop-shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
+                >
+                  00
+                </div>
+                <div class="mt-3 sm:mt-4 font-cinzel text-[9px] sm:text-xs font-bold uppercase tracking-[0.24em] text-gold-light">
+                  Minutes
+                </div>
+              </div>
+
+              <div class="countdown-medallion countdown-seconds-card rounded-t-full rounded-b-2xl pt-6 pb-4 px-2 sm:pt-8 sm:pb-6 sm:px-4">
+                <div
+                  id="cd-secs"
+                  class="countdown-numeral text-3xl sm:text-5xl md:text-[3.4rem] font-bold text-gold-light leading-none drop-shadow-[0_4px_16px_rgba(255,226,138,0.55)]"
+                >
+                  00
+                </div>
+                <div class="mt-3 sm:mt-4 font-cinzel text-[9px] sm:text-xs font-bold uppercase tracking-[0.24em] text-offwhite">
+                  Seconds
+                </div>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-7 sm:mt-9 inline-flex items-center justify-center gap-2.5 rounded-full border border-gold-light/30 bg-offwhite/10 px-5 py-1.5 text-xs sm:text-sm font-serif italic text-offwhite/90 backdrop-blur-sm">
+              <span class="text-gold-light text-xs">&#10084;</span>
+              <span>Saturday, November 21, 2026</span>
+              <span class="text-gold-light">&bull;</span>
+              <span>4:30 PM IST</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornament-line my-10 sm:my-12"></div>
+
+        <!-- =====================================================
+             REDESIGNED ROYAL KEEPSAKE GUESTBOOK & WALL OF BLESSINGS
+             ===================================================== -->
+        <section class="stagger-item" data-stagger="9" aria-label="Send Your Wishes to Jestin and Aiwa">
+          <div class="guestbook-folio-shell rounded-[2rem] p-6 sm:p-10 md:p-12">
+            <div class="pointer-events-none absolute inset-2.5 sm:inset-3.5 rounded-[1.55rem] border border-burgundy/10"></div>
+
+            <div class="relative z-10 text-center max-w-2xl mx-auto">
+              <div class="mx-auto mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold/60 bg-burgundy text-gold-light shadow-md">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+                  <line x1="16" y1="8" x2="2" y2="22" />
+                  <line x1="17.5" y1="15" x2="9" y2="15" />
+                </svg>
+              </div>
+
+              <div class="inline-flex items-center justify-center gap-2.5">
+                <span class="h-px w-8 bg-gradient-to-r from-transparent to-gold"></span>
+                <span class="font-sans text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.28em] text-burgundy/80">
+                  The Wedding Guestbook
+                </span>
+                <span class="h-px w-8 bg-gradient-to-l from-transparent to-gold"></span>
+              </div>
+
+              <h2 class="mt-2 font-cinzel text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide text-burgundy">
+                Send Your <span class="font-playfair italic font-semibold text-gold">Wishes</span>
+              </h2>
+              <p class="mt-2.5 font-lora text-base sm:text-lg leading-relaxed text-burgundy/85">
+                Leave a heartfelt prayer, blessing, or note of love for Jestin &amp; Aiwa as they begin their new journey together.
+              </p>
+            </div>
+
+            <form id="wishes-form" class="relative z-10 mt-8 max-w-2xl mx-auto space-y-5" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                <div>
+                  <label for="wish-name" class="block font-cinzel text-xs font-bold uppercase tracking-wider text-burgundy mb-2">
+                    Your Name <span class="text-gold">*</span>
+                  </label>
+                  <div class="guestbook-input-wrap">
+                    <span class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-burgundy/55">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </span>
+                    <input
+                      id="wish-name"
+                      type="text"
+                      required
+                      placeholder="e.g., Thomas & Family"
+                      class="guestbook-input"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="wish-relation" class="block font-cinzel text-xs font-bold uppercase tracking-wider text-burgundy mb-2">
+                    Relation / From
+                  </label>
+                  <div class="guestbook-input-wrap">
+                    <span class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-burgundy/55">
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </span>
+                    <input
+                      id="wish-relation"
+                      type="text"
+                      placeholder="e.g., Cousin, Friend, Manikkadavu"
+                      class="guestbook-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="wish-message" class="block font-cinzel text-xs font-bold uppercase tracking-wider text-burgundy mb-2">
+                  Your Wedding Wish / Blessing <span class="text-gold">*</span>
+                </label>
+                <textarea
+                  id="wish-message"
+                  rows="3"
+                  required
+                  placeholder="Write your warm wishes for Jestin & Aiwa..."
+                  class="guestbook-input guestbook-textarea"
+                ></textarea>
+              </div>
+
+              <div
+                id="wish-feedback"
+                class="hidden rounded-2xl border px-4 py-3 text-center font-sans text-sm font-semibold transition-all"
+                role="status"
+              ></div>
+
+              <div class="pt-1 text-center">
+                <button
+                  type="submit"
+                  class="wax-seal-submit-btn inline-flex items-center justify-center gap-2.5 rounded-full px-9 py-3.5 font-cinzel text-sm sm:text-base font-bold tracking-wider text-offwhite focus:outline-none focus:ring-2 focus:ring-gold"
+                >
+                  <span>Send Blessing</span>
+                  <span aria-hidden="true">&#10084;&#65039;&#10024;</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Live Wall of Blessings -->
+            <div class="relative z-10 mt-11 pt-8 border-t border-burgundy/15">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-gold text-base">&#10022;</span>
+                  <h3 class="font-cinzel text-lg sm:text-xl font-bold tracking-wide text-burgundy">
+                    Wall of Blessings
+                  </h3>
+                </div>
+                <span
+                  id="wishes-count-badge"
+                  class="rounded-full border border-gold/50 bg-burgundy px-4 py-1 font-sans text-xs font-bold tracking-wide text-gold-light shadow-sm"
+                >
+                  3 Blessings
+                </span>
+              </div>
+
+              <div id="wishes-wall" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <article class="blessing-note-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="blessing-quote-mark" aria-hidden="true">&ldquo;</div>
+                    <p class="blessing-wish-text -mt-3">
+                      May God bless your union with endless love, laughter, and grace. Wishing Jestin &amp; Aiwa a lifetime of togetherness!
+                    </p>
+                  </div>
+                  <div class="mt-5 pt-3.5 border-t border-burgundy/10 flex items-center justify-between">
+                    <div>
+                      <p class="font-cinzel text-xs font-bold tracking-wide text-burgundy">With Love &amp; Prayers</p>
+                    </div>
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-burgundy/10 text-gold text-xs">&#10022;</span>
+                  </div>
+                </article>
+
+                <article class="blessing-note-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="blessing-quote-mark" aria-hidden="true">&ldquo;</div>
+                    <p class="blessing-wish-text -mt-3">
+                      Congratulations on finding your forever in each other! Can&rsquo;t wait to celebrate this beautiful day at Manikkadavu.
+                    </p>
+                  </div>
+                  <div class="mt-5 pt-3.5 border-t border-burgundy/10 flex items-center justify-between">
+                    <div>
+                      <p class="font-cinzel text-xs font-bold tracking-wide text-burgundy">Dear Friends</p>
+                    </div>
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-burgundy/10 text-gold text-xs">&#10022;</span>
+                  </div>
+                </article>
+
+                <article class="blessing-note-card rounded-2xl p-6 flex flex-col justify-between">
+                  <div>
+                    <div class="blessing-quote-mark" aria-hidden="true">&ldquo;</div>
+                    <p class="blessing-wish-text -mt-3">
+                      Wishing you both a joyful marriage filled with warmth, understanding, and countless cherished memories together.
+                    </p>
+                  </div>
+                  <div class="mt-5 pt-3.5 border-t border-burgundy/10 flex items-center justify-between">
+                    <div>
+                      <p class="font-cinzel text-xs font-bold tracking-wide text-burgundy">Cousins</p>
+                    </div>
+                    <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-burgundy/10 text-gold text-xs">&#10022;</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ornament-line my-10 sm:my-12"></div>
+
+        <!-- =====================================================
+             WARM CLOSING MESSAGE & FOOTER
+             ===================================================== -->
+        <section class="stagger-item text-center" data-stagger="10" aria-label="Closing Message">
+          <div class="mx-auto max-w-2xl rounded-3xl border border-burgundy/15 bg-offwhite-warm/75 p-6 sm:p-9">
+            <p class="font-serif italic text-xl sm:text-2xl leading-relaxed text-burgundy">
+              &ldquo;Your presence would make our special day even more memorable. We look forward to celebrating this joyful occasion with you and your family!&rdquo;
+            </p>
+            <p class="mt-4 font-cinzel text-lg sm:text-xl font-bold tracking-wider text-burgundy">
+              With Love, Jestin &amp; Aiwa ❤️✨
+            </p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 text-center font-sans text-xs text-burgundy/65">
+          <p class="font-cinzel font-semibold tracking-widest text-burgundy/80">
+            JESTIN &amp; AIWA &bull; 21 . 11 . 2026
+          </p>
+          <p class="mt-1">St. Thomas Church, Manikkadavu</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <!-- =========================================================
+       INTERACTIVE JAVASCRIPT (LIGHTBOX, 3D CUBE, CALENDAR, AUDIO, COUNTDOWN, SMS WISHES)
+       ========================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* =========================================================
+         BACKGROUND WEDDING MUSIC WITH MULTI-PATH FALLBACK & INSTANT UNLOCK
+         ========================================================= */
+      const bgMusic = document.getElementById('bg-music');
+      const audioFilePicker = document.getElementById('audio-file-picker');
+      const musicToggleBtn = document.getElementById('music-toggle-btn');
+      const musicStatusLabel = document.getElementById('music-status-label');
+      const eqBars = [
+        document.getElementById('eq-1'),
+        document.getElementById('eq-2'),
+        document.getElementById('eq-3'),
+      ];
+
+      const candidateSources = [
+        'music.mp3',
+        'music.mp3.mp3',
+        'music.MP3',
+        'music.m4a',
+        'Adam Joan  Eden Thottam Song Video  Prithviraj Sukumaran  Deepak Dev  Official - Muzik247.mp3',
+      ];
+
+      let candidateIndex = 0;
+      let userManuallyMuted = false;
+      let allCandidatesFailed = false;
+      let customObjectUrl = null;
+
+      function setEqualizerActive(active) {
+        eqBars.forEach((bar) => {
+          if (!bar) return;
+          if (active) {
+            bar.classList.remove('eq-paused');
+          } else {
+            bar.classList.add('eq-paused');
+          }
+        });
+      }
+
+      function loadCandidateSource() {
+        if (!bgMusic || candidateIndex >= candidateSources.length) {
+          allCandidatesFailed = true;
+          setEqualizerActive(false);
+          if (musicStatusLabel) {
+            musicStatusLabel.textContent = 'Select Song';
+            musicStatusLabel.classList.remove('hidden');
+          }
+          return;
+        }
+        bgMusic.src = candidateSources[candidateIndex];
+        bgMusic.load();
+      }
+
+      if (bgMusic) {
+        bgMusic.volume = 0.85;
+        bgMusic.muted = false;
+
+        bgMusic.addEventListener('error', () => {
+          if (customObjectUrl) return;
+          candidateIndex += 1;
+          if (candidateIndex < candidateSources.length) {
+            loadCandidateSource();
+            if (!userManuallyMuted) {
+              bgMusic.play().catch(() => {});
+            }
+          } else {
+            allCandidatesFailed = true;
+            setEqualizerActive(false);
+            if (musicStatusLabel) {
+              musicStatusLabel.textContent = 'Select Song';
+              musicStatusLabel.classList.remove('hidden');
+            }
+          }
+        });
+
+        bgMusic.addEventListener('playing', () => {
+          allCandidatesFailed = false;
+          if (musicStatusLabel) musicStatusLabel.classList.add('hidden');
+          setEqualizerActive(true);
+          removeGestureListeners();
+        });
+
+        bgMusic.addEventListener('pause', () => {
+          setEqualizerActive(false);
+        });
+
+        loadCandidateSource();
+      }
+
+      function triggerAudioPlayback() {
+        if (!bgMusic || userManuallyMuted || allCandidatesFailed) return;
+
+        bgMusic.muted = false;
+        bgMusic.volume = 0.85;
+
+        if (bgMusic.paused) {
+          bgMusic
+            .play()
+            .then(() => {
+              setEqualizerActive(true);
+              removeGestureListeners();
+            })
+            .catch(() => {});
+        } else {
+          setEqualizerActive(true);
+          removeGestureListeners();
+        }
+      }
+
+      const gestureEvents = [
+        'pointerdown',
+        'touchstart',
+        'touchmove',
+        'touchend',
+        'mousedown',
+        'mousemove',
+        'click',
+        'keydown',
+        'scroll',
+        'wheel',
+      ];
+
+      function removeGestureListeners() {
+        gestureEvents.forEach((evt) => {
+          window.removeEventListener(evt, triggerAudioPlayback, true);
+          document.removeEventListener(evt, triggerAudioPlayback, true);
+        });
+      }
+
+      gestureEvents.forEach((evt) => {
+        window.addEventListener(evt, triggerAudioPlayback, { capture: true, passive: true });
+        document.addEventListener(evt, triggerAudioPlayback, { capture: true, passive: true });
+      });
+
+      triggerAudioPlayback();
+      if (bgMusic) {
+        bgMusic.addEventListener('canplay', triggerAudioPlayback);
+        bgMusic.addEventListener('canplaythrough', triggerAudioPlayback);
+      }
+
+      if (audioFilePicker && bgMusic) {
+        audioFilePicker.addEventListener('change', (e) => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+          if (customObjectUrl) URL.revokeObjectURL(customObjectUrl);
+          customObjectUrl = URL.createObjectURL(file);
+          allCandidatesFailed = false;
+          userManuallyMuted = false;
+          if (musicStatusLabel) musicStatusLabel.classList.add('hidden');
+          bgMusic.src = customObjectUrl;
+          bgMusic.muted = false;
+          bgMusic.load();
+          bgMusic.play().then(() => setEqualizerActive(true)).catch(() => {});
+        });
+      }
+
+      if (musicToggleBtn && bgMusic) {
+        musicToggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (allCandidatesFailed && audioFilePicker) {
+            audioFilePicker.click();
+            return;
+          }
+          if (bgMusic.paused || bgMusic.muted) {
+            userManuallyMuted = false;
+            bgMusic.muted = false;
+            bgMusic.play().then(() => setEqualizerActive(true)).catch(() => {
+              if (audioFilePicker) audioFilePicker.click();
+            });
+          } else {
+            userManuallyMuted = true;
+            bgMusic.pause();
+            setEqualizerActive(false);
+          }
+        });
+      }
+
+      /* =========================================================
+         DYNAMIC ROYAL KEEPSAKE CALENDAR (NOVEMBER 2026)
+         ========================================================= */
+      const calendarGrid = document.getElementById('royal-calendar-grid');
+      const calendarLiveStatus = document.getElementById('calendar-live-status');
+
+      function renderRoyalCalendar() {
+        if (!calendarGrid) return;
+
+        const year = 2026;
+        const month = 10;
+        const weddingDay = 21;
+        const firstWeekday = new Date(year, month, 1).getDay();
+        const totalDays = new Date(year, month + 1, 0).getDate();
+
+        calendarGrid.innerHTML = '';
+
+        for (let i = 0; i < firstWeekday; i++) {
+          const emptyCell = document.createElement('div');
+          emptyCell.className = 'aspect-square';
+          calendarGrid.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= totalDays; day++) {
+          const delayMs = day * 24;
+
+          if (day === weddingDay) {
+            const heartBtn = document.createElement('button');
+            heartBtn.type = 'button';
+            heartBtn.className = 'cal-wedding-heart-btn';
+            heartBtn.setAttribute('aria-label', 'Saturday, November 21, 2026 — Wedding Day');
+            heartBtn.title = 'Jestin & Aiwa Wedding Day — Saturday, Nov 21, 2026';
+
+            heartBtn.innerHTML = `
+              <svg class="wedding-heart-svg" viewBox="0 0 36 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="weddingHeartGold" x1="4" y1="2" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFFDF5" />
+                    <stop offset="35%" stop-color="#FFE48F" />
+                    <stop offset="72%" stop-color="#E7C87B" />
+                    <stop offset="100%" stop-color="#C89D46" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M18 31.5C18 31.5 3 22.1 3 11.4C3 6.6 6.8 3 11.4 3C14.2 3 16.6 4.4 18 6.5C19.4 4.4 21.8 3 24.6 3C29.2 3 33 6.6 33 11.4C33 22.1 18 31.5 18 31.5Z"
+                  fill="url(#weddingHeartGold)"
+                  stroke="#581826"
+                  stroke-width="1.4"
+                />
+              </svg>
+              <span class="wedding-heart-number">${day}</span>
+            `;
+
+            heartBtn.addEventListener('click', () => {
+              const particleCount = 14;
+              for (let p = 0; p < particleCount; p++) {
+                const spark = document.createElement('span');
+                spark.className = 'seal-sparkle-particle';
+                const angle = (Math.PI * 2 * p) / particleCount;
+                const dist = 36 + Math.random() * 20;
+                spark.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+                spark.style.setProperty('--ty', `${Math.sin(angle) * dist}px`);
+                spark.style.left = '50%';
+                spark.style.top = '50%';
+                heartBtn.appendChild(spark);
+                setTimeout(() => spark.remove(), 900);
+              }
+            });
+
+            calendarGrid.appendChild(heartBtn);
+          } else {
+            const tile = document.createElement('div');
+            tile.className = 'cal-day-tile cal-tile-animate';
+            tile.style.setProperty('--tile-delay', `${delayMs}ms`);
+            tile.textContent = day;
+            calendarGrid.appendChild(tile);
+          }
+        }
+
+        if (calendarLiveStatus) {
+          const now = new Date();
+          const weddingMidnight = new Date(2026, 10, 21, 0, 0, 0);
+          const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
+          const diffDays = Math.round((weddingMidnight - todayMidnight) / (1000 * 60 * 60 * 24));
+
+          if (diffDays > 1) {
+            calendarLiveStatus.textContent = `${diffDays} Days Left`;
+          } else if (diffDays === 1) {
+            calendarLiveStatus.textContent = 'Tomorrow!';
+          } else if (diffDays === 0) {
+            calendarLiveStatus.textContent = 'Today is the Day!';
+          } else {
+            calendarLiveStatus.textContent = 'Happily Married';
+          }
+        }
+      }
+
+      renderRoyalCalendar();
+
+      /* =========================================================
+         INTRO OVERLAY & STAGGERED ENTRANCE
+         ========================================================= */
+      const introOverlay = document.getElementById('intro-overlay');
+      const skipIntroBtn = document.getElementById('skip-intro-btn');
+      const mainBackdrop = document.getElementById('main-backdrop');
+      const staggerItems = Array.from(document.querySelectorAll('.stagger-item'));
+
+      let introCompleted = false;
+
+      function finishIntroAndRevealMain() {
+        if (introCompleted) return;
+        introCompleted = true;
+
+        introOverlay.classList.add('fade-out');
+        document.body.classList.remove('intro-active');
+
+        setTimeout(() => {
+          mainBackdrop.classList.add('bg-revealed');
+        }, 350);
+
+        setTimeout(() => {
+          staggerItems.forEach((el, index) => {
+            const delay = index * 220;
+            setTimeout(() => {
+              el.classList.add('is-visible');
+            }, delay);
+          });
+        }, 950);
+      }
+
+      const introTimer = setTimeout(finishIntroAndRevealMain, 5800);
+
+      skipIntroBtn.addEventListener('click', () => {
+        clearTimeout(introTimer);
+        triggerAudioPlayback();
+        finishIntroAndRevealMain();
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && introCompleted) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      staggerItems.forEach((item) => observer.observe(item));
+
+      /* =========================================================
+         LIVE COUNTDOWN TIMER WITH 3D FLIP-CASCADE ANIMATION
+         ========================================================= */
+      const weddingTarget = new Date('2026-11-21T16:30:00+05:30').getTime();
+
+      function setDigitWithFlip(el, newValue) {
+        if (!el || el.textContent === newValue) return;
+        el.textContent = newValue;
+        el.classList.remove('digit-flip-tick');
+        void el.offsetWidth;
+        el.classList.add('digit-flip-tick');
+      }
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = weddingTarget - now;
+
+        const daysEl = document.getElementById('cd-days');
+        const hoursEl = document.getElementById('cd-hours');
+        const minsEl = document.getElementById('cd-mins');
+        const secsEl = document.getElementById('cd-secs');
+
+        if (!daysEl) return;
+
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minsEl.textContent = '00';
+          secsEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / 1000 / 60) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        setDigitWithFlip(daysEl, String(days).padStart(2, '0'));
+        setDigitWithFlip(hoursEl, String(hours).padStart(2, '0'));
+        setDigitWithFlip(minsEl, String(mins).padStart(2, '0'));
+        setDigitWithFlip(secsEl, String(secs).padStart(2, '0'));
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      /* =========================================================
+         AUTO-REVEAL & EDGE-GLOW SPOTLIGHT + FULLSCREEN & 3D MAGIC CUBE
+         ========================================================= */
+      const photoCards = Array.from(document.querySelectorAll('.photo-glow-card'));
+
+      const photoRevealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              entry.target.classList.add('is-active');
+            } else {
+              entry.target.classList.remove('is-active');
+            }
+          });
+        },
+        { threshold: 0.28 }
+      );
+
+      photoCards.forEach((card) => {
+        photoRevealObserver.observe(card);
+      });
+
+      const galleryPhotos = photoCards.map((card) => {
+        const img = card.querySelector('img');
+        const captionEl = card.querySelector('p');
+        return {
+          src: img ? img.getAttribute('src') : '',
+          alt: img ? img.getAttribute('alt') : '',
+          caption: captionEl ? captionEl.textContent.trim() : '',
+        };
+      });
+
+      const experienceModal = document.getElementById('gallery-experience-modal');
+      const modalModeHint = document.getElementById('modal-mode-hint');
+      const fullscreenPhotoStage = document.getElementById('fullscreen-photo-stage');
+      const fullscreenPhotoImg = document.getElementById('fullscreen-photo-img');
+      const fullscreenPhotoCaption = document.getElementById('fullscreen-photo-caption');
+      const fullscreenControls = document.getElementById('fullscreen-controls');
+
+      const cube3dStage = document.getElementById('cube-3d-stage');
+      const magicCube3d = document.getElementById('magic-cube-3d');
+      const cubeControls = document.getElementById('cube-controls');
+
+      const open3dCubeBtn = document.getElementById('open-3d-cube-btn');
+      const fullscreenMainPageBtn = document.getElementById('fullscreen-main-page-btn');
+      const exit3dViewBtn = document.getElementById('exit-3d-view-btn');
+      const cubeMainPageBtn = document.getElementById('cube-main-page-btn');
+      const shuffleCubeFacesBtn = document.getElementById('shuffle-cube-faces-btn');
+
+      let activePhotoIndex = 0;
+      let cubeFaceOffset = 0;
+      let is3dViewActive = false;
+
+      let rotX = -16;
+      let rotY = 28;
+      let velX = 0.25;
+      let velY = 0.45;
+      let isDraggingCube = false;
+      let lastPointerX = 0;
+      let lastPointerY = 0;
+      let cubeAnimFrameId = null;
+
+      function populateCubeFaces(startIndex) {
+        if (!galleryPhotos.length) return;
+        for (let face = 0; face < 6; face++) {
+          const faceImg = document.getElementById(`cube-img-${face}`);
+          if (!faceImg) continue;
+          const photo = galleryPhotos[(startIndex + face) % galleryPhotos.length];
+          faceImg.src = photo.src;
+          faceImg.alt = photo.alt;
+        }
+      }
+
+      function renderCubeTransform() {
+        if (magicCube3d) {
+          magicCube3d.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
+        }
+      }
+
+      function animateCubeLoop() {
+        if (!is3dViewActive) return;
+
+        if (!isDraggingCube) {
+          rotY += velY;
+          rotX += velX;
+          velY = velY * 0.96 + 0.35 * 0.04;
+          velX = velX * 0.95;
+        }
+        renderCubeTransform();
+        cubeAnimFrameId = requestAnimationFrame(animateCubeLoop);
+      }
+
+      function switchToFullscreenSingleView(index) {
+        is3dViewActive = false;
+        if (cubeAnimFrameId) {
+          cancelAnimationFrame(cubeAnimFrameId);
+          cubeAnimFrameId = null;
+        }
+
+        activePhotoIndex = index;
+        const item = galleryPhotos[activePhotoIndex] || galleryPhotos[0];
+        if (fullscreenPhotoImg && item) {
+          fullscreenPhotoImg.src = item.src;
+          fullscreenPhotoImg.alt = item.alt;
+        }
+        if (fullscreenPhotoCaption && item) {
+          fullscreenPhotoCaption.textContent = item.caption;
+        }
+
+        if (modalModeHint) modalModeHint.textContent = 'Full Screen View';
+        if (fullscreenPhotoStage) fullscreenPhotoStage.style.display = 'flex';
+        if (fullscreenControls) {
+          fullscreenControls.classList.remove('hidden');
+          fullscreenControls.classList.add('flex');
+        }
+        if (cube3dStage) cube3dStage.style.display = 'none';
+        if (cubeControls) {
+          cubeControls.classList.add('hidden');
+          cubeControls.classList.remove('flex');
+        }
+      }
+
+      function switchTo3dMagicCubeView() {
+        is3dViewActive = true;
+        cubeFaceOffset = activePhotoIndex;
+        populateCubeFaces(cubeFaceOffset);
+
+        rotX = -16;
+        rotY = 28;
+        velX = 0.1;
+        velY = 0.55;
+        renderCubeTransform();
+
+        if (modalModeHint) modalModeHint.textContent = '3D Magic Cube';
+        if (fullscreenPhotoStage) fullscreenPhotoStage.style.display = 'none';
+        if (fullscreenControls) {
+          fullscreenControls.classList.add('hidden');
+          fullscreenControls.classList.remove('flex');
+        }
+        if (cube3dStage) cube3dStage.style.display = 'flex';
+        if (cubeControls) {
+          cubeControls.classList.remove('hidden');
+          cubeControls.classList.add('flex');
+        }
+
+        if (cubeAnimFrameId) cancelAnimationFrame(cubeAnimFrameId);
+        cubeAnimFrameId = requestAnimationFrame(animateCubeLoop);
+      }
+
+      function openPhotoExperience(index) {
+        if (!experienceModal) return;
+        switchToFullscreenSingleView(index);
+        experienceModal.classList.add('is-open');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeToMainPage() {
+        is3dViewActive = false;
+        if (cubeAnimFrameId) {
+          cancelAnimationFrame(cubeAnimFrameId);
+          cubeAnimFrameId = null;
+        }
+        if (experienceModal) {
+          experienceModal.classList.remove('is-open');
+        }
+        document.body.classList.remove('modal-open');
+      }
+
+      photoCards.forEach((card, idx) => {
+        card.addEventListener('click', () => {
+          openPhotoExperience(idx);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openPhotoExperience(idx);
+          }
+        });
+      });
+
+      if (open3dCubeBtn) {
+        open3dCubeBtn.addEventListener('click', switchTo3dMagicCubeView);
+      }
+      if (fullscreenMainPageBtn) {
+        fullscreenMainPageBtn.addEventListener('click', closeToMainPage);
+      }
+      if (exit3dViewBtn) {
+        exit3dViewBtn.addEventListener('click', () => {
+          switchToFullscreenSingleView(activePhotoIndex);
+        });
+      }
+      if (cubeMainPageBtn) {
+        cubeMainPageBtn.addEventListener('click', closeToMainPage);
+      }
+      if (shuffleCubeFacesBtn) {
+        shuffleCubeFacesBtn.addEventListener('click', () => {
+          cubeFaceOffset = (cubeFaceOffset + 3) % galleryPhotos.length;
+          populateCubeFaces(cubeFaceOffset);
+          velY = 3.2;
+        });
+      }
+
+      if (cube3dStage) {
+        cube3dStage.addEventListener('pointerdown', (e) => {
+          isDraggingCube = true;
+          lastPointerX = e.clientX;
+          lastPointerY = e.clientY;
+          velX = 0;
+          velY = 0;
+          cube3dStage.setPointerCapture(e.pointerId);
+        });
+
+        cube3dStage.addEventListener('pointermove', (e) => {
+          if (!isDraggingCube) return;
+          const dx = e.clientX - lastPointerX;
+          const dy = e.clientY - lastPointerY;
+          lastPointerX = e.clientX;
+          lastPointerY = e.clientY;
+
+          const sensitivity = 0.55;
+          velY = dx * sensitivity;
+          velX = -dy * sensitivity;
+
+          rotY += velY;
+          rotX += velX;
+          renderCubeTransform();
+        });
+
+        function endCubeDrag(e) {
+          if (!isDraggingCube) return;
+          isDraggingCube = false;
+          try {
+            cube3dStage.releasePointerCapture(e.pointerId);
+          } catch (err) {
+            // Ignore capture release errors
+          }
+        }
+
+        cube3dStage.addEventListener('pointerup', endCubeDrag);
+        cube3dStage.addEventListener('pointercancel', endCubeDrag);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && experienceModal && experienceModal.classList.contains('is-open')) {
+          closeToMainPage();
+        }
+      });
+
+      /* =========================================================
+         SEND YOUR WISHES (DIRECT SMS TO 7012446894) & WALL OF BLESSINGS
+         ========================================================= */
+      const wishesForm = document.getElementById('wishes-form');
+      const wishNameInput = document.getElementById('wish-name');
+      const wishRelationInput = document.getElementById('wish-relation');
+      const wishMessageInput = document.getElementById('wish-message');
+      const wishFeedback = document.getElementById('wish-feedback');
+      const wishesWall = document.getElementById('wishes-wall');
+      const wishesCountBadge = document.getElementById('wishes-count-badge');
+
+      const TARGET_SMS_NUMBER = '7012446894';
+      const STORAGE_KEY = 'jestin_aiwa_wedding_wishes_v1';
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function buildSmsUrl(phoneNumber, text) {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const separator = isIOS ? '&' : '?';
+        return `sms:${phoneNumber}${separator}body=${encodeURIComponent(text)}`;
+      }
+
+      function createWishCardElement(wish, animate = false) {
+        const article = document.createElement('article');
+        article.className =
+          'blessing-note-card rounded-2xl p-6 flex flex-col justify-between' +
+          (animate ? ' wish-card-enter' : '');
+
+        const relationText = wish.relation ? escapeHtml(wish.relation) : 'Warm Blessings';
+        article.innerHTML = `
+          <div>
+            <div class="blessing-quote-mark" aria-hidden="true">&ldquo;</div>
+            <p class="blessing-wish-text -mt-3">
+              ${escapeHtml(wish.message)}
+            </p>
+          </div>
+          <div class="mt-5 pt-3.5 border-t border-burgundy/10 flex items-center justify-between">
+            <div>
+              <p class="font-cinzel text-xs font-bold tracking-wide text-burgundy">${escapeHtml(wish.name)}</p>
+              <p class="font-sans text-[11px] font-medium text-burgundy/65">${relationText}</p>
+            </div>
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-burgundy/10 text-gold text-xs">&#10022;</span>
+          </div>
+        `;
+        return article;
+      }
+
+      function updateWishesCount() {
+        if (!wishesWall || !wishesCountBadge) return;
+        const total = wishesWall.children.length;
+        wishesCountBadge.textContent = `${total} ${total === 1 ? 'Blessing' : 'Blessings'}`;
+      }
+
+      try {
+        const savedWishes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (Array.isArray(savedWishes) && savedWishes.length > 0 && wishesWall) {
+          savedWishes.forEach((w) => {
+            wishesWall.prepend(createWishCardElement(w, false));
+          });
+          updateWishesCount();
+        }
+      } catch (e) {
+        // Ignore storage errors
+      }
+
+      if (wishesForm) {
+        wishesForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = wishNameInput.value.trim();
+          const relation = wishRelationInput.value.trim();
+          const message = wishMessageInput.value.trim();
+
+          if (!name || !message) {
+            wishFeedback.textContent = 'Please enter your name and your wedding blessing before sending.';
+            wishFeedback.className =
+              'rounded-2xl border border-burgundy/30 bg-burgundy/10 px-4 py-3 text-center font-sans text-sm font-semibold text-burgundy';
+            wishFeedback.classList.remove('hidden');
+            return;
+          }
+
+          const newWish = { name, relation, message };
+
+          wishesWall.prepend(createWishCardElement(newWish, true));
+          updateWishesCount();
+
+          try {
+            const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            existing.push(newWish);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+          } catch (err) {
+            // Ignore storage errors
+          }
+
+          const senderTag = relation ? `${name} (${relation})` : name;
+          const smsBody = `Wedding Blessing for Jestin & Aiwa:\n"${message}"\n- From ${senderTag}`;
+          const smsHref = buildSmsUrl(TARGET_SMS_NUMBER, smsBody);
+
+          wishFeedback.innerHTML = `Opening your SMS app to send your blessing to <strong>${TARGET_SMS_NUMBER}</strong>... <a href="${smsHref}" class="underline text-gold-light ml-1">Tap here if SMS didn't open</a>`;
+          wishFeedback.className =
+            'rounded-2xl border border-gold bg-burgundy px-4 py-3 text-center font-sans text-sm font-semibold text-offwhite shadow-md';
+          wishFeedback.classList.remove('hidden');
+
+          wishesForm.reset();
+
+          window.location.href = smsHref;
+
+          setTimeout(() => {
+            wishFeedback.classList.add('hidden');
+          }, 8000);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
